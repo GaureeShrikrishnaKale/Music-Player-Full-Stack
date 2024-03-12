@@ -5,6 +5,7 @@ require("dotenv/config");
 const cors = require("cors");
 const {default : mongoose} = require("mongoose");
 
+const PORT = process.env.PORT || 4000;
 app.use(cors({origin : true}));
 
 app.get("/", (req, res) => {
@@ -34,4 +35,4 @@ mongoose.connection
     console.log(`ERROR : ${error}`);
 })
 
-app.listen(4000, () => console.log("listening to port 4000"));
+app.listen(PORT, () => console.log(`listening at port ${PORT}`));
