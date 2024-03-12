@@ -41,12 +41,13 @@ const ContactUs = () => {
     animate={{ y: 0, scale: [0.9, 1], opacity: [0, 1] }} // Animate to the final position
      transition={{ duration: 0.5, ease: "easeInOut" }}
     >
-      {/* Background image with opacity */}
       <div className='absolute inset-0 flex items-end justify-center'
+      // Background image with opacity
        style={{ backgroundImage: `url(${connectImage})`, opacity: 0.3, backgroundSize: "cover" }}
       >
-        {/* Content */}
-        <p className='text-headingColor text-center text-5xl align-bottom text-black font-semibold p-3'>Get In Touch!</p>
+        <p className='text-headingColor text-center text-5xl align-bottom text-black font-semibold p-3'  
+        //Content
+        >Get In Touch!</p>
       </div>
     </motion.div>
 
@@ -62,7 +63,7 @@ const ContactUs = () => {
       </motion.p>
     </div>
 
-    <div className='flex flex-col gap-12 mb-10'>
+    <div className='flex flex-col items-center gap-8 mb-10 '>
       <Card title={"HELP CENTER"} description={"Got questions? We have got answers"} icon={<IoHelpBuoyOutline/>} buttonTitle={"Visit Help Center"}/>
 
       <Card title={"CHAT"} description={"Typical reply time, within seconds Monday - Friday 10am 4pm IST"} icon={<PiChatCircleDotsLight/>} buttonTitle={"Chat With Us"}/>
@@ -95,7 +96,7 @@ return (
   initial={{ opacity: 0, translateX: -50 }}
   animate={{ opacity: 1, translateX: 0 }}
   transition={{ duration: 0.3, delay: 1 * 0.1 }} 
-  className='border border-primary p-4 rounded-md shadow-2xl flex justify-items-center items-center'
+  className='border border-primary p-4 rounded-md shadow-2xl flex justify-items-center items-center w-656'
   >
     <div className='flex justify-center items-center text-5xl pr-4'>
     {icon}

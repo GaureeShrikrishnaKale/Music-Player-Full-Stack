@@ -87,7 +87,7 @@ const Premium = () => {
      variants={textVariants}
      initial="hidden"
      animate="visible"
-    className='text-headingColor text-2xl p-4'>
+    className='text-headingColor text-2xl p-4 text-center'>
       {text.split("").map((char, index) => (
           <motion.span key={index} variants={letterVariants}>{char}</motion.span>
         ))}

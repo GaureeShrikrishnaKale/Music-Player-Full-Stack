@@ -9,6 +9,8 @@ import { storage } from "../config/firebase.config";
 
 const DashboardAlbums = () => {
   const [{ allAlbums }, dispatch] = useStateValue();
+  const location = window.location.pathname;
+
   useEffect(() => {
     if (!allAlbums) {
       getAllAlbums().then((data) => {
@@ -17,8 +19,21 @@ const DashboardAlbums = () => {
     }
   }, []);
   return (
-    <div className="w-full p-4 flex items-center justify-center flex-col">
-      <div className="relative w-full gap-3  my-4 p-4 py-12 border border-gray-300 rounded-md flex flex-wrap justify-evenly">
+    <div className="w-full 
+    p-4
+    flex items-center justify-center flex-col">
+     {
+      location === "/musics" && (
+        <p className='text-xl font-bold text-left'>
+        <span className='text-sm font-semibold text-textColor'>
+          Albums
+        </span>
+        </p>
+      )
+     }
+      <div className={`relative w-full gap-3  my-4 p-4 py-12 
+      ${location !== "/musics" ? "border border-gray-300 rounded-md" : ""}
+       flex flex-wrap justify-evenly`}>
         {allAlbums &&
           allAlbums.map((data, index) => (
             <>
@@ -32,7 +47,8 @@ const DashboardAlbums = () => {
 
 export const AlbumCard = ({ data, index }) => {
   const [isDelete, setIsDelete] = useState(false);
-
+  const location = window.location.pathname;
+  // console.log("locc:",location);
   const [alert, setAlert] = useState(false);
   const [alertMsg, setAlertMsg] = useState(null);
   const [{ allAlbums, artist }, dispatch] = useStateValue();
@@ -116,13 +132,17 @@ export const AlbumCard = ({ data, index }) => {
 
       <p className="text-base text-textColor mb-3 text-center">{data.name}</p>
 
-      <motion.i
+     {
+      location === "/dashboard/albums" && (
+        <motion.i
         className="absolute bottom-2 right-2"
         whileTap={{ scale: 0.75 }}
         onClick={() => setIsDelete(true)}
       >
         <MdDelete className=" text-gray-400 hover:text-red-400 text-xl cursor-pointer" />
       </motion.i>
+      )
+     }
 
     </motion.div>
   );

@@ -12,6 +12,8 @@ import { storage } from "../config/firebase.config";
 
 const DashboardArtists = () => {
   const [{ allArtists }, dispatch] = useStateValue();
+  const location = window.location.pathname;
+  // console.log("loc:", location);
 
   useEffect(() => {
     if (!allArtists) {
@@ -23,7 +25,16 @@ const DashboardArtists = () => {
 
   return (
     <div className="w-full p-4 flex items-center justify-center flex-col">
-      <div className="relative w-full gap-3  my-4 p-4 py-12 border border-gray-300 rounded-md flex flex-wrap justify-evenly">
+          {
+            location === "/musics" && (
+              <p className='text-xl font-bold text-left pt-10'>
+            <span className='text-sm font-semibold text-textColor'>
+              Artists
+            </span>
+             </p>
+            )
+          }
+      <div className={`relative w-full gap-3 my-4 p-4 py-12 ${location !== "/musics" ? "border border-gray-300 rounded-md" : ""} flex flex-wrap justify-evenly`}>
         {allArtists &&
           allArtists.map((data, index) => (
             <>
@@ -37,6 +48,7 @@ const DashboardArtists = () => {
 
 export const ArtistCard = ({ data, index }) => {
   const [isDelete, setIsDelete] = useState(false);
+  const location = window.location.pathname;
 
   const [alert, setAlert] = useState(false);
     const [alertMsg, setAlertMsg] = useState(null);
@@ -133,13 +145,18 @@ export const ArtistCard = ({ data, index }) => {
           </motion.i>
         </a>
       </div>
-      <motion.i
+
+      {
+        location === "/dashboard/artists" && (
+          <motion.i
         className="absolute bottom-2 right-2"
         whileTap={{ scale: 0.75 }}
         onClick={() => setIsDelete(true)}
       >
         <MdDelete className=" text-gray-400 hover:text-red-400 text-xl cursor-pointer" />
       </motion.i>
+        )
+      }
     </motion.div>
   );
 };

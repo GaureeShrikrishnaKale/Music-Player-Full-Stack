@@ -9,6 +9,7 @@ import { getAllSongs } from '../api';
 import { IoMusicalNote } from 'react-icons/io5';
 import {IoMdClose} from "react-icons/io";
 import { IoArrowRedo } from 'react-icons/io5';
+import { CgMinimize } from "react-icons/cg";
 
 const MusicPlayer = () => {
     const [isPlayList, setIsPlayList] = useState(false);
@@ -115,7 +116,7 @@ const MusicPlayer = () => {
                     <IoMdClose className="text-textColor hover:text-headingColor text-2xl cursor-pointer" />
                 </motion.i>
                 <motion.i whileTap={{ scale: 0.8 }} onClick={togglePlayer}>
-                    <IoArrowRedo className="text-textColor hover:text-headingColor text-2xl cursor-pointer" />
+                    <CgMinimize className="text-textColor hover:text-headingColor text-2xl cursor-pointer" />
                 </motion.i>
             </div>
         </div>  

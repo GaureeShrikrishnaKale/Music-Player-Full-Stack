@@ -8,6 +8,8 @@ import { actionType } from '../context/reducer';
 import SongCard from './SongCard';
 import { LuFolderHeart } from "react-icons/lu";
 import { motion } from 'framer-motion';
+import DashboardArtists from './DashboardArtists';
+import DashboardAlbums from './DashboardAlbums';
 
 const MusicsPage = () => {
   const [songFilter, setSongFilter] = useState("");
@@ -92,6 +94,8 @@ export const SongContainer = ({data}) => {
           <SongCard key={song._id} data={song} index={i}/>
         ))
       }
+      <DashboardArtists/>
+      <DashboardAlbums/>
     </div>
   );
 };
